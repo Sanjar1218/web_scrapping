@@ -1,6 +1,8 @@
-import requests
+from bs4 import BeautifulSoup
 
+with open('home.html', 'r') as f:
+    text = f.read()
 
-r = requests.get('https://example.com/')
+soup = BeautifulSoup(text, features="html.parser")
 
-print(r.text.split('<h1>')[1].split('</h1>')[0])
+print(soup.find_next_sibling('h1'))
